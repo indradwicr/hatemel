@@ -1,149 +1,77 @@
 <!doctype html>
-<html lang="id">
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#f65b35">
-  <meta name="description" content="CodeFlow — ruang kerja coding web yang ringan, cepat, dan gratis.">
-  <link rel="manifest" href="manifest.webmanifest">
-  <link rel="icon" href="icon.svg" type="image/svg+xml">
-  <title>CodeFlow — Build something great</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f45c37"><meta name="description" content="CodeFlow — your free, local-first web development studio.">
+<link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon.svg">
+<title>CodeFlow Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/material-darker.min.css">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="app-shell">
-    <aside class="sidebar">
-      <a class="brand" href="#" aria-label="CodeFlow home">
-        <span class="brand-mark"><span></span><span></span><span></span></span>
-        <span>codeflow<span class="brand-dot">.</span></span>
-      </a>
-      <button class="workspace-switch">
-        <span class="workspace-avatar">H</span>
-        <span class="workspace-copy"><b>My workspace</b><small>Personal plan</small></span>
-        <span class="chevron">⌄</span>
-      </button>
-      <div class="side-label">WORKSPACE</div>
-      <nav class="side-nav">
-        <button class="nav-item active" data-view="projects"><span class="nav-icon">▦</span> Projects <span class="nav-count" id="projectCount">03</span></button>
-        <button class="nav-item" data-view="templates"><span class="nav-icon">▤</span> Templates</button>
-        <button class="nav-item" data-view="favorites"><span class="nav-icon">☆</span> Favorites</button>
-      </nav>
-      <div class="side-label side-label-spaced">PREFERENCES</div>
-      <nav class="side-nav">
-        <button class="nav-item" data-view="settings"><span class="nav-icon">⚙</span> Settings</button>
-      </nav>
-      <div class="sidebar-bottom">
-        <div class="storage-card">
-          <div class="storage-top"><span>Local storage</span><span class="storage-dot"></span></div>
-          <div class="storage-bar"><i></i></div>
-          <small>Your projects stay on this device.</small>
-        </div>
-        <div class="profile">
-          <div class="profile-avatar">H</div>
-          <div><b>Hey, developer!</b><small>Free forever</small></div>
-          <button class="more-btn" aria-label="More">···</button>
-        </div>
-      </div>
-    </aside>
-
-    <main class="main-area">
-      <header class="topbar">
-        <div class="mobile-brand"><span class="brand-mark"><span></span><span></span><span></span></span> codeflow<span class="brand-dot">.</span></div>
-        <div class="breadcrumbs"><span>Workspace</span><b>/</b><strong id="crumbCurrent">Projects</strong></div>
-        <div class="top-actions">
-          <button class="icon-btn" id="themeToggle" title="Toggle theme">◐</button>
-          <button class="help-btn">? <span>Help</span></button>
-          <div class="top-avatar">H</div>
-        </div>
-      </header>
-
-      <section class="view active" id="projectsView">
-        <div class="welcome-row">
-          <div>
-            <div class="eyebrow"><span class="eyebrow-line"></span> YOUR CREATIVE SPACE</div>
-            <h1>Build something<br><em>great.</em></h1>
-            <p class="intro">Your ideas deserve a place to grow. Pick up where you left off.</p>
-          </div>
-          <div class="hero-orb" aria-hidden="true"><div class="orb-ring"></div><div class="orb-core">✳</div><span class="orb-spark s1">✦</span><span class="orb-spark s2">✧</span></div>
-        </div>
-
-        <div class="section-heading">
-          <div><h2>Your projects <span class="muted-count" id="headingCount">03</span></h2><p>Everything you're working on, in one place.</p></div>
-          <div class="heading-actions"><label class="search-box"><span>⌕</span><input id="projectSearch" placeholder="Search projects..." aria-label="Search projects"><kbd>⌘ K</kbd></label><button class="primary-btn" id="newProjectBtn"><span>＋</span> New project</button></div>
-        </div>
-        <div class="project-grid" id="projectGrid"></div>
-        <div class="bottom-hint"><span class="hint-icon">✦</span><span><b>A little reminder</b> — Your work is saved automatically on this device.</span><button id="dismissHint" aria-label="Dismiss">×</button></div>
-      </section>
-
-      <section class="view" id="templatesView">
-        <div class="page-heading"><div class="eyebrow"><span class="eyebrow-line"></span> START WITH A SPARK</div><h1>Made to get you<br><em>moving.</em></h1><p>Choose a starting point. Make it yours.</p></div>
-        <div class="template-grid" id="templateGrid"></div>
-      </section>
-
-      <section class="view" id="favoritesView">
-        <div class="page-heading"><div class="eyebrow"><span class="eyebrow-line"></span> YOUR SHORTLIST</div><h1>Saved for<br><em>later.</em></h1><p>Your favorite projects, right where you need them.</p></div>
-        <div class="project-grid" id="favoriteGrid"></div>
-      </section>
-
-      <section class="view" id="settingsView">
-        <div class="page-heading"><div class="eyebrow"><span class="eyebrow-line"></span> MAKE IT YOURS</div><h1>Preferences.</h1><p>A few little things to make your workspace feel right.</p></div>
-        <div class="settings-card">
-          <div><b>Appearance</b><small>Choose how CodeFlow looks on this device.</small></div>
-          <div class="segmented"><button class="selected" data-theme="light">Light</button><button data-theme="dark">Dark</button></div>
-        </div>
-        <div class="settings-card"><div><b>Project data</b><small>Projects are stored locally in this browser.</small></div><button class="outline-btn" id="exportAllBtn">Export backup ↓</button></div>
-        <div class="settings-card"><div><b>About CodeFlow</b><small>Made for ideas, not subscriptions. Free forever.</small></div><span class="version-pill">VERSION 1.0</span></div>
-      </section>
-
-      <section class="editor-view" id="editorView">
-        <div class="editor-topline">
-          <button class="back-btn" id="backToProjects">← <span>All projects</span></button>
-          <div class="editor-project-title"><span class="live-indicator"></span><input id="projectNameInput" value="Untitled project" aria-label="Project name"></div>
-          <div class="editor-actions"><span class="saved-label" id="saveStatus">● Saved</span><button class="outline-btn small" id="exportProjectBtn">Export ↗</button><button class="primary-btn small" id="runBtn">▶ Run preview</button></div>
-        </div>
-        <div class="editor-workspace">
-          <aside class="file-panel">
-            <div class="panel-title">EXPLORER <button id="addFileBtn" title="Add file">＋</button></div>
-            <div class="file-root">⌄ <b>PROJECT FILES</b></div>
-            <div id="fileList" class="file-list"></div>
-            <div class="file-panel-foot"><span class="green-dot"></span> All changes saved locally</div>
-          </aside>
-          <div class="code-panel">
-            <div class="code-toolbar"><div class="file-tab" id="activeFileTab"><span class="file-type html">5</span> index.html <span class="tab-close">×</span></div><div class="code-toolbar-right"><span id="languageLabel">HTML</span><button id="copyCodeBtn" title="Copy code">▢</button></div></div>
-            <div class="editor-body"><div class="line-numbers" id="lineNumbers">1<br>2<br>3<br>4<br>5</div><textarea id="codeEditor" spellcheck="false" autocapitalize="off" autocomplete="off" aria-label="Code editor"></textarea></div>
-            <div class="editor-status"><span id="cursorStatus">Ln 1, Col 1</span><span><i class="green-dot"></i> UTF-8</span><span>Spaces: 2</span><span id="fileTypeStatus">HTML</span></div>
-          </div>
-          <div class="preview-panel">
-            <div class="preview-toolbar"><div><span class="preview-dot"></span><b>Preview</b><span class="preview-live">LIVE</span></div><div><button id="refreshPreview" title="Refresh">↻</button><button id="expandPreview" title="Expand">⛶</button></div></div>
-            <div class="preview-stage"><iframe id="previewFrame" title="Live website preview" sandbox="allow-scripts"></iframe></div>
-            <div class="preview-footer"><span><i class="green-dot"></i> Local preview</span><span>Changes update automatically</span></div>
-          </div>
-        </div>
-      </section>
-      <footer class="main-footer"><span>© 2026 CodeFlow</span><span>Crafted for curious minds <b>✳</b></span></footer>
-    </main>
-  </div>
-
-  <nav class="mobile-nav">
-    <button class="active" data-view="projects"><span>▦</span>Projects</button>
-    <button data-view="templates"><span>▤</span>Templates</button>
-    <button data-view="favorites"><span>☆</span>Saved</button>
-    <button data-view="settings"><span>⚙</span>Settings</button>
+<div class="app">
+<aside class="sidebar">
+  <a class="brand" href="#"><span class="brand-icon">c<span>f</span></span><span>codeflow<span class="orange">.</span></span></a>
+  <div class="workspace"><div class="workspace-avatar">Y</div><div><b>Personal workspace</b><small>Free plan · Local storage</small></div><span class="chev">⌄</span></div>
+  <div class="nav-caption">WORKSPACE</div>
+  <nav class="side-nav">
+    <button class="side-link active" data-page="projects"><span>▦</span> All projects <i id="sideCount">04</i></button>
+    <button class="side-link" data-page="templates"><span>▤</span> Templates</button>
+    <button class="side-link" data-page="favorites"><span>☆</span> Favorites</button>
   </nav>
-  <div class="toast" id="toast"></div>
-  <div class="modal-backdrop" id="newProjectModal">
-    <div class="modal">
-      <button class="modal-close" id="closeModal">×</button>
-      <div class="modal-icon">✳</div><div class="eyebrow">A FRESH CANVAS</div>
-      <h2>What are we<br><em>building today?</em></h2>
-      <label class="field-label" for="newProjectName">PROJECT NAME</label>
-      <input class="modal-input" id="newProjectName" placeholder="e.g. My awesome website" maxlength="40">
-      <div class="modal-actions"><button class="outline-btn" id="cancelCreate">Cancel</button><button class="primary-btn" id="createProject">Create project →</button></div>
-    </div>
+  <div class="nav-caption">PREFERENCES</div>
+  <nav class="side-nav"><button class="side-link" data-page="settings"><span>⚙</span> Settings</button></nav>
+  <div class="sidebar-bottom">
+    <div class="local-card"><div class="local-top"><span>LOCAL WORKSPACE</span><span class="online-dot"></span></div><div class="local-meter"><i></i></div><small>Your code stays on this device.</small></div>
+    <div class="user-row"><div class="user-avatar">Y</div><div><b>Your workspace</b><small>Free forever</small></div><button id="workspaceMenu">···</button></div>
   </div>
-  <script src="app.js"></script>
-</body>
-</html>
+</aside>
+<main class="main">
+<header class="topbar"><div class="mobile-brand"><span class="brand-icon">c<span>f</span></span> codeflow<span class="orange">.</span></div><div class="crumb"><span>Workspace</span><b>/</b><strong id="crumb">Projects</strong></div><div class="top-right"><button class="icon-button" id="globalSearchBtn" title="Search (⌘K)">⌕</button><button class="icon-button" id="themeBtn" title="Toggle theme">◐</button><button class="avatar-small">Y</button></div></header>
+<section class="page active" id="projectsPage">
+  <div class="hero">
+    <div><div class="eyebrow"><span></span> YOUR CREATIVE WORKSPACE</div><h1>Make room for<br><em>great ideas.</em></h1><p>Pick up where you left off. Your next big thing starts here.</p></div>
+    <div class="hero-art"><div class="art-orbit"></div><div class="art-symbol">✳</div><i>✦</i><b>✧</b></div>
+  </div>
+  <div class="section-head"><div><h2>Recent projects <small id="projectTotal">04</small></h2><p>Your ideas, all in one place.</p></div><div class="toolbar"><label class="search"><span>⌕</span><input id="searchInput" placeholder="Find a project..."><kbd>⌘ K</kbd></label><button class="btn primary" id="createBtn">＋ New project</button></div></div>
+  <div class="project-grid" id="projectGrid"></div>
+  <div class="tip"><span>✦</span><div><b>Made to flow.</b> Every edit is saved automatically in your browser.</div><button id="dismissTip">×</button></div>
+</section>
+<section class="page" id="templatesPage"><div class="page-intro"><div class="eyebrow"><span></span> START SOMEWHERE GOOD</div><h1>Less setup.<br><em>More making.</em></h1><p>Pick a starter and make it your own.</p></div><div class="template-grid" id="templateGrid"></div></section>
+<section class="page" id="favoritesPage"><div class="page-intro"><div class="eyebrow"><span></span> YOUR SHORTLIST</div><h1>Worth keeping<br><em>close.</em></h1><p>The projects you marked as favorites.</p></div><div class="project-grid" id="favoriteGrid"></div></section>
+<section class="page" id="settingsPage"><div class="page-intro"><div class="eyebrow"><span></span> YOUR WORKSPACE</div><h1>Make it <em>yours.</em></h1><p>Preferences and workspace tools.</p></div>
+  <div class="settings-list">
+    <div class="setting"><div><b>Appearance</b><small>Choose your preferred workspace theme.</small></div><div class="segmented"><button data-theme="light">Light</button><button data-theme="dark">Dark</button></div></div>
+    <div class="setting"><div><b>Backup workspace</b><small>Export all projects as a ZIP archive.</small></div><button class="btn outline" id="backupBtn">Export backup ↓</button></div>
+    <div class="setting"><div><b>Import projects</b><small>Restore a CodeFlow ZIP or import a website folder archive.</small></div><button class="btn outline" id="importBtn">Import ZIP ↑</button><input type="file" id="importInput" accept=".zip,.json" hidden></div>
+    <div class="setting"><div><b>Storage</b><small>Project files are saved in this browser using local storage.</small></div><span class="pill">LOCAL-FIRST</span></div>
+    <div class="setting"><div><b>About CodeFlow</b><small>A lightweight workspace. No subscription. No account required.</small></div><span class="version">V 2.0.0</span></div>
+  </div>
+</section>
+
+<section class="studio" id="studio">
+  <div class="studio-head"><button class="back" id="backBtn">← <span>Projects</span></button><div class="project-title"><span class="pulse"></span><input id="studioName" value="Untitled project"></div><div class="studio-actions"><span id="saveState">● Saved</span><button class="btn outline compact" id="downloadBtn">Export ZIP ↓</button><button class="btn primary compact" id="previewBtn">▶ Preview</button></div></div>
+  <div class="studio-layout">
+    <aside class="explorer"><div class="explorer-head">EXPLORER <button id="newFileBtn" title="New file">＋</button></div><div class="root-label">⌄ &nbsp; PROJECT</div><div id="fileTree" class="file-tree"></div><div class="explorer-bottom"><span class="online-dot"></span> Saved on this device</div></aside>
+    <section class="editor-pane"><div class="editor-top"><div class="tab-strip" id="tabs"></div><div class="editor-tools"><button id="copyBtn" title="Copy file">▢</button><button id="formatBtn" title="Format code">⤢</button></div></div><div id="editorMount"><textarea id="fallbackEditor" spellcheck="false"></textarea></div><div class="editor-foot"><span id="cursorInfo">Ln 1, Col 1</span><span id="languageInfo">HTML</span><span>UTF-8</span><span>Spaces: 2</span></div></section>
+    <section class="preview-pane"><div class="preview-head"><div><span class="preview-led"></span><b>Live preview</b><span class="live-tag">LIVE</span></div><div class="preview-tools"><button id="refreshBtn" title="Refresh preview">↻</button><button id="deviceBtn" title="Change viewport">▣</button><button id="openPreviewBtn" title="Open preview in new tab">↗</button></div></div><div class="device-switch" id="deviceSwitch"><button class="selected" data-device="desktop">Desktop</button><button data-device="tablet">Tablet</button><button data-device="mobile">Mobile</button></div><div class="preview-canvas"><div class="device-frame desktop" id="deviceFrame"><iframe id="preview" title="Website preview" sandbox="allow-scripts allow-forms"></iframe></div></div><div class="preview-foot"><span><i class="online-dot"></i> Local preview</span><span id="previewSize">Responsive · 100%</span></div></section>
+  </div>
+</section>
+<footer class="footer"><span>© 2026 CodeFlow Studio</span><span>Built for the curious <b>✳</b></span></footer>
+</main>
+</div>
+<nav class="mobile-nav"><button class="active" data-page="projects"><span>▦</span>Projects</button><button data-page="templates"><span>▤</span>Templates</button><button data-page="favorites"><span>☆</span>Saved</button><button data-page="settings"><span>⚙</span>Settings</button></nav>
+<div class="toast" id="toast"></div>
+<div class="modal-backdrop" id="projectModal"><div class="modal"><button class="modal-x" id="modalClose">×</button><div class="modal-mark">✳</div><div class="eyebrow">A FRESH CANVAS</div><h2>What are we<br><em>building today?</em></h2><label for="projectName">PROJECT NAME</label><input id="projectName" placeholder="e.g. My awesome website" maxlength="48"><div class="modal-actions"><button class="btn outline" id="modalCancel">Cancel</button><button class="btn primary" id="modalCreate">Create project →</button></div></div></div>
+<div class="context-menu" id="contextMenu"><button data-action="open">Open project</button><button data-action="duplicate">Duplicate</button><button data-action="rename">Rename</button><button data-action="delete" class="danger">Delete project</button></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/xml/xml.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/css/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/javascript/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/htmlmixed/htmlmixed.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="app.js"></script>
+</body></html>

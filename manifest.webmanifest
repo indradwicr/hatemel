@@ -1,7 +1,7 @@
 {
-  "name": "CodeFlow \u2014 Web Code Editor",
+  "name": "CodeFlow Studio",
   "short_name": "CodeFlow",
-  "description": "A lightweight workspace for building websites.",
+  "description": "Free local-first web development studio",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#f8f8f6",

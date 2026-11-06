@@ -1,27 +1,38 @@
-# CodeFlow
+# CodeFlow Studio v2
 
-A lightweight, mobile-first web code workspace.
+A free, mobile-first, local-first HTML/CSS/JS workspace.
 
 ## Run locally
-Open `index.html` in a browser. For PWA installation and offline caching, serve the folder over HTTPS or localhost.
+For best results serve this folder through a local web server (or GitHub Pages). Opening `index.html` directly also works for basic editing, but PWA installation requires HTTPS or localhost.
 
-## Deploy free with GitHub Pages
-1. Create a GitHub repository.
-2. Upload all files from this folder to the repository root.
-3. Open **Settings → Pages**.
-4. Set deployment source to **Deploy from a branch**, choose `main` and `/ (root)`.
-5. Open the generated GitHub Pages URL on your phone and choose **Add to Home Screen**.
+## Deploy with GitHub Pages (free)
+1. Create a public GitHub repository.
+2. Upload all files in this folder to the repository root.
+3. Go to Settings → Pages.
+4. Choose Deploy from a branch, `main`, `/ (root)`.
+5. Open the published URL on your phone and use Share → Add to Home Screen.
 
-## Current features
-- Project dashboard with search and favorites
-- HTML, CSS and JavaScript file editing
-- Live preview in a sandboxed iframe
-- Autosave to browser localStorage
+## Included
+- Responsive desktop and mobile dashboard
+- Projects, favorites, search, duplicate, rename, delete
+- HTML, CSS, JS editing with CodeMirror syntax highlighting
+- Fallback editor if CodeMirror CDN is unavailable
+- Live sandboxed preview
+- Desktop / tablet / mobile preview widths
+- Autosave to localStorage
 - Starter templates
-- JSON project/workspace backup
-- Light and dark themes
-- Responsive desktop and mobile navigation
-- Basic PWA shell and offline caching
+- ZIP export per project and full workspace backup
+- ZIP import (root-level HTML/CSS/JS files) and JSON backup import
+- Light and dark theme
+- PWA manifest and offline app-shell caching
 
-## Notes
-Projects are stored locally in the browser on this device. Export backups regularly. This starter does not include cloud sync, SSH/SFTP, ZIP import/export, or a bundled syntax-highlighting engine yet.
+## Free dependencies
+CodeMirror 5 and JSZip are loaded from cdnjs (MIT licenses). An internet connection is needed on first load for syntax highlighting and ZIP features. Basic editing and preview still work if the CDN is unavailable.
+
+## Data & privacy
+Projects are stored in this browser on this device. There is no account, backend, analytics, or cloud sync. Export backups regularly before clearing browser data.
+
+## Current limitations
+- ZIP importer reads root-level HTML/CSS/JS files; it does not yet preserve nested folders or binary assets.
+- Preview runs in a sandboxed iframe; some browser APIs and external resources may be restricted.
+- SSH/SFTP, Git integration, collaborative editing and AI code generation are not included.
