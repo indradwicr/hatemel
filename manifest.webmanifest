@@ -1,0 +1,17 @@
+{
+  "name": "CodeFlow \u2014 Web Code Editor",
+  "short_name": "CodeFlow",
+  "description": "A lightweight workspace for building websites.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f8f8f6",
+  "theme_color": "#f45c37",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
